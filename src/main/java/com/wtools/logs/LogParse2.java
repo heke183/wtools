@@ -39,6 +39,8 @@ public class LogParse2 {
 //            parseExAlarm();
 
         System.out.println(1);
+        System.out.println(2);
+
     }
 
 
