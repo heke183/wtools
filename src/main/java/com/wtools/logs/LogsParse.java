@@ -19,10 +19,10 @@ public class LogsParse {
     }
 
     public static void parseMessageDate() throws IOException {
-        Path sourceFile = Paths.get("D:\\doc\\dizhi\\shpharm.log.2019-06-17.7");
-        Path targetFile = Paths.get("D:\\doc\\dizhi\\shpharm.log.2019-06-17-test.7");
+        Path sourceFile = Paths.get("D:\\doc\\dizhi\\shpharm.log.2019-06-17.8");
+        Path targetFile = Paths.get("D:\\doc\\dizhi\\shpharm.log.2019-06-17-8-[http-apr-8080-exec-1647]");
         Files.lines(sourceFile, Charset.forName("gb2312"))
-                .filter(s -> s.startsWith("2019-06-17 10:41:33"))
+                .filter(s ->  s.contains("[http-apr-8080-exec-1647]"))
                 .forEach(s -> {
                     try {
                         Files.write(targetFile, s.getBytes(), StandardOpenOption.APPEND, StandardOpenOption.CREATE);
