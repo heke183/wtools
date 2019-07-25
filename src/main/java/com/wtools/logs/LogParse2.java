@@ -1,5 +1,7 @@
 package com.wtools.logs;
 
+import com.sun.xml.internal.ws.util.StringUtils;
+
 import java.io.IOException;
 import java.nio.charset.Charset;
 import java.nio.file.Files;
@@ -28,12 +30,12 @@ public class LogParse2 {
 //        parseSygcLog();
 //        parseShpharm();
 
-//        parseWithKeywords("D:\\doc\\errorlog\\20190621\\shpharm\\shpharm.log.2019-06-21.5\\shpharm.log.2019-06-21.5"
-//                ,"updateAutoRfidCabinetInv"
-//                ,"gb2312"
-//                ,"call updateAutoRfidCabinetInv");
+        parseWithKeywords("D:\\doc\\errorlog\\20190621\\syims\\demo.log.2019-06-21.1"
+                ,"actionMessage"
+                ,"gb2312"
+                ,"actionMessage st|actionMessage ed");
 
-        parseMerge("D:\\doc\\errorlog\\20190621\\shpharm\\shpharm.log.2019-06-21.5\\shpharm.log.2019-06-21.5-updateAutoRfidCabinetInv","utf-8","call updateAutoRfidCabinetInv end");
+//        parseMerge("D:\\doc\\errorlog\\20190621\\shpharm\\shpharm.log.2019-06-21.5\\shpharm.log.2019-06-21.5-updateAutoRfidCabinetInv","utf-8","call updateAutoRfidCabinetInv end");
 
 
 //            parseExAlarm();
@@ -46,8 +48,9 @@ public class LogParse2 {
         Path sourceFile = Paths.get(sourceLog);
         Path targetFile = Paths.get(sourceLog+"-"+funcName);
         Files.lines(sourceFile, Charset.forName(charset))
-                .filter(s -> s.contains(kewwords))
-                .forEach(s -> {
+                .filter(s ->
+                    Arrays.stream(kewwords.split("\\|")).map(v -> s.contains(v)).filter(v -> v==true).count() > 0
+                ).forEach(s -> {
                     try {
                         Files.write(targetFile, s.getBytes(), StandardOpenOption.APPEND, StandardOpenOption.CREATE);
                         Files.write(targetFile, "\n".getBytes(), StandardOpenOption.APPEND, StandardOpenOption.CREATE);
