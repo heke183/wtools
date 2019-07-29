@@ -16,7 +16,9 @@ public class LogsParse {
 
     public static void main(String[] args) throws Exception {
         parseMessageDate();
+        System.out.println(2);
     }
+
 
     public static void parseMessageDate() throws IOException {
         Path sourceFile = Paths.get("D:\\doc\\dizhi\\shpharm.log.2019-06-17.7");
