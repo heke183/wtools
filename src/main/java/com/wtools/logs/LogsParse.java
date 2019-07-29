@@ -17,6 +17,7 @@ public class LogsParse {
     public static void main(String[] args) throws Exception {
         parseMessageDate();
         System.out.println(1);
+        System.out.println(2);
     }
 
     public static void parseMessageDate() throws IOException {
