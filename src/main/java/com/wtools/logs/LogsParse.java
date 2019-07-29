@@ -31,6 +31,10 @@ public class LogsParse {
 
     }
 
+    public static void method5(){
+
+    }
+
     public static void parseMessageDate() throws IOException {
         Path sourceFile = Paths.get("D:\\doc\\dizhi\\shpharm.log.2019-06-17.7");
         Path targetFile = Paths.get("D:\\doc\\dizhi\\shpharm.log.2019-06-17-test.7");
